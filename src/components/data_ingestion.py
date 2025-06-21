@@ -7,6 +7,11 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
+# This module handles the data ingestion process, which involves reading
+# a dataset from a CSV file, splitting it into training and testing sets,
+
 
 # ---------------------------------------------------------------
 # DataIngestionConfig is a configuration class for managing file
@@ -57,6 +62,12 @@ class DataIngestion:
         logging.info("Exiting the data ingestion method or component")
 
 if __name__ == "__main__":
-    obj= DataIngestion()
-    obj.initiate_data_ingestion()
+    
+    obj=DataIngestion()
+    train_data,test_data,_=obj.initiate_data_ingestion()
+
+    data_transformation=DataTransformation()
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
+
+    
     print("Data Ingestion Completed")
