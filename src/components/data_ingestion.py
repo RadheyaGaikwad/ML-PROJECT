@@ -9,6 +9,10 @@ from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
+
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
+
 # This module handles the data ingestion process, which involves reading
 # a dataset from a CSV file, splitting it into training and testing sets,
 
@@ -71,3 +75,7 @@ if __name__ == "__main__":
 
     
     print("Data Ingestion Completed")
+
+    
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
