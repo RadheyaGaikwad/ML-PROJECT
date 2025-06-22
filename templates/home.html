@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head><title>Predict Math Score</title></head>
+<body>
+    <h1>Student Exam Performance Indicator</h1>
+
+    <form action="{{ url_for('predict_datapoint')}}" method="post">
+        Gender: <select name="gender" required>
+            <option selected disabled value="">Select Gender</option>
+            <option value="male">Male</option><option value="female">Female</option>
+        </select><br><br>
+
+        Race/Ethnicity: <select name="ethnicity" required>
+            <option selected disabled value="">Select Ethnicity</option>
+            <option value="group A">Group A</option><option value="group B">Group B</option>
+            <option value="group C">Group C</option><option value="group D">Group D</option>
+            <option value="group E">Group E</option>
+        </select><br><br>
+
+        Parental Education: <select name="parental_level_of_education" required>
+            <option selected disabled value="">Select</option>
+            <option value="associate's degree">Associate's Degree</option>
+            <option value="bachelor's degree">Bachelor's Degree</option>
+            <option value="high school">High School</option>
+            <option value="master's degree">Master's Degree</option>
+            <option value="some college">Some College</option>
+            <option value="some high school">Some High School</option>
+        </select><br><br>
+
+        Lunch: <select name="lunch" required>
+            <option selected disabled value="">Select Lunch</option>
+            <option value="standard">Standard</option><option value="free/reduced">Free/Reduced</option>
+        </select><br><br>
+
+        Test Prep Course: <select name="test_preparation_course" required>
+            <option selected disabled value="">Select Option</option>
+            <option value="none">None</option><option value="completed">Completed</option>
+        </select><br><br>
+
+        Reading Score: <input type="number" name="reading_score" min="0" max="100" required><br><br>
+        Writing Score: <input type="number" name="writing_score" min="0" max="100" required><br><br>
+
+        <input type="submit" value="Predict Math Score">
+    </form>
+
+    {% if results %}
+        <h2>Predicted Math Score: {{ results }}</h2>
+    {% endif %}
+</body>
+</html>
